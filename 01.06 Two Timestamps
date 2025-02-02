@@ -1,0 +1,3 @@
+hours = input("Enter Hours: ")
+minutes = input("Enter Minutes: ")
+seconds = input("Enter Seconds: ")
