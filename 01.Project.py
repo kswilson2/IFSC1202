@@ -1,0 +1,1 @@
+second = int(input("Enter Length of Time in Seconds: "))
