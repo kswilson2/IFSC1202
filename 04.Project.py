@@ -4,3 +4,5 @@ for x in range(1, height+1):
     for i in range(1, x+1):
         print("*", end="")
     print("")
+for i in range(height-1, 0, -1):
+    print("*"*i)
