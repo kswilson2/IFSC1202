@@ -5,10 +5,9 @@ for i in range(x, y+1):
     sum = 0
     original = i
     while i > 0:
+        digit = i % 10
         i //= 10
         length += 1
-    while i > 0:
-        digit = i % 10
         sum += digit ** length
         i //= 10
     if sum == original:
