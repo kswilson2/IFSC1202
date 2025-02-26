@@ -19,7 +19,8 @@ while userscore <=30 and compscore <= 30:
     else: 
        compscore += comproll
     print (f"{username}'s Score: {userscore}")
-    print (f"Computer's Score: {compscore}")   
+    print (f"Computer's Score: {compscore}")
+    print ("#"*20)   
 if userscore > compscore:
    print (f"{username} Wins")
 else:
