@@ -16,7 +16,7 @@ while mergeline != "":
     outputfile.write(mergeline)
     mergecount += 1
     mergeline = mergefile.readline()
-while line != '':
+while line != '':    
     outputfile.write(line)
     inputcount += 1
     line = inputfile.readline()
