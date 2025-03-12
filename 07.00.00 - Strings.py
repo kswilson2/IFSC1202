@@ -46,9 +46,9 @@ print(s[::-1])  #gfedcba
 # Example 6 
 print('Example 6')
 s = 'abcdefghijklm'
-print(s[0:10:2])
-for i in range(0, 10, 2):
-    print(i, s[i])
+print(s[0:10:2]) #starting at 0, add 2, until reaching 10
+for i in range(0, 10, 2): #starting at 0, add 2, until reaching 10
+    print(i, s[i]) #index number, letter assoc. with index number
     
 # Example 7 
 print("Example 7")
