@@ -1,12 +1,26 @@
+s = str(input("Enter: "))
+degreeloc = s.find(chr(176))
+minuteloc = s.find("'")
+secondloc = s.find('"')
+degrees = float(s[:degreeloc])
+minutes = float(s[degreeloc+1:minuteloc])
+seconds = float(s[minuteloc+1:secondloc])
+print(degrees)
+print(minutes)
+print(seconds)
 
-degreeloc = read.find(chr(176))
-minuteloc = read.find("'")
-secondloc = read.find('"')
-degrees = float[0:degreeloc]
-minutes = float[degreeloc+1:minuteloc]
-seconds = float[minuteloc+1:secondloc]
-
-degrees = float[0:read.find(chr(176))]
-
-minute = float(read.find("'"))
-second = float(read.find('"'))
+d = float(input("Degrees: "))
+m = float(input("Minutes: "))
+s = float(input("Seconds: "))
+decimaldegrees= d + (m/60) + (s/3600)
+print(decimaldegrees)
+#final
+s = str(input("Enter: "))
+degreeloc = s.find(chr(176))
+minuteloc = s.find("'")
+secondloc = s.find('"')
+degrees = float(s[:degreeloc])
+minutes = float(s[degreeloc+1:minuteloc])
+seconds = float(s[minuteloc+1:secondloc])
+decimaldegrees= degrees + (minutes/60) + (seconds/3600)
+print(decimaldegrees)
