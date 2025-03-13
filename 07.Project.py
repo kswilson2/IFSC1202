@@ -1,17 +1,25 @@
-inputfile = open("07.Project Angles Input.txt", "r")
-read = inputfile.readline()
-outputcount = 0
-while read != "":
-    degreeloc = read.find(chr(176))
-    minuteloc = read.find("'")
-    secondloc = read.find('"')
-    degrees = float(read[:degreeloc])
-    minutes = float(read[degreeloc+1:minuteloc])
-    seconds = float(read[minuteloc+1:secondloc])
+def ParseDegreeString(ddmmss):
+    degreeloc = ddmmss.find(chr(176))
+    minuteloc = ddmmss.find("'")
+    secondloc = ddmmss.find('"')
+    degrees = float(ddmmss[:degreeloc])
+    minutes = float(ddmmss[degreeloc+1:minuteloc])
+    seconds = float(ddmmss[minuteloc+1:secondloc])
+    return degrees, minutes, seconds
+def DDMMSStoDecimal(degrees, minutes, seconds):
     decimaldegrees= degrees + (minutes/60) + (seconds/3600)
-    outputfile = open("07.Project Angles Output.txt", "w")
-    outputcount += 1
-    outputfile.write(str(decimaldegrees))
-    break
-    print(outputcount)  
-    
+    return decimaldegrees
+inputfile = "07.Project Angles Input.txt"
+outputfile ="07.Project Angles Output.txt"
+def file(inputfile, outputfile):
+    with open(inputfile, "r") as infile:
+        lines = infile.readlines()
+    outputcount = 0
+    for line in lines:
+        degrees, minutes, seconds = ParseDegreeString(ddmmss)
+        decimaldegrees = DDMMSStoDecimal(degrees, minutes, seconds)
+        ouputcount.append(decimaldegrees) 
+    with open(outputfile, "w") as outfile:
+        for decimaldegrees in outputcount:
+            outputfile.write(f"{decimaldegrees}")
+    return len(outputcount)
