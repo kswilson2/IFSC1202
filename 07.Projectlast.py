@@ -12,16 +12,11 @@ def DDMMSStoDecimal(degrees, minutes, seconds):
 
 inputfile = open("07.Project Angles Input.txt", "r")
 outputfile = open("07.Project Angles Output.txt", "w")
-lines = inputfile.readlines()
-filecount = 0
-while lines != "":
-    degreeloc = lines.find(chr(176))
-    minuteloc = lines.find("'")
-    secondloc = lines.find('"')
-    degrees = float(lines[:degreeloc])
-    minutes = float(lines[degreeloc+1:minuteloc])
-    seconds = float(lines[minuteloc+1:secondloc])
-    decimaldegrees= degrees + (minutes/60) + (seconds/3600)
-    filecount += 1
-    outputfile.write(f"{decimaldegrees}")
-    print(filecount)
+inputcount = 0
+line = inputfile.readline()
+while line != "":  
+    ParseDegreeString(ddmmss) == degrees, minutes, seconds
+    DDMMSStoDecimal(degrees, minutes, seconds) == decimaldegrees
+    outputfile.write(decimaldegrees)
+    inputcount += 1
+    line = inputfile.readline()
