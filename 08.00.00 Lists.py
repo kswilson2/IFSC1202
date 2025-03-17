@@ -33,6 +33,8 @@ print([7, 8] + [9])
 print([0, 1] * 3)
  
 # Example 4
+print()
+print("Example 4")
 a = [1, 2, 3, 4, 5]
 # Print all the values on a single line
 for i in range(len(a)):
