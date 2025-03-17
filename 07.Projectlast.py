@@ -15,8 +15,11 @@ outputfile = open("07.Project Angles Output.txt", "w")
 inputcount = 0
 line = inputfile.readline()
 while line != "":  
-    ParseDegreeString(ddmmss) == degrees, minutes, seconds
-    DDMMSStoDecimal(degrees, minutes, seconds) == decimaldegrees
-    outputfile.write(decimaldegrees)
+    degrees, minutes, seconds = ParseDegreeString(line) 
+    decimaldegrees = DDMMSStoDecimal(degrees, minutes, seconds)
+    outputfile.write(str(decimaldegrees) + "\n")
     inputcount += 1
     line = inputfile.readline()
+inputfile.close()
+outputfile.close()
+print(inputcount,"records read")

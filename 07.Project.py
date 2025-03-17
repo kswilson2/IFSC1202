@@ -9,17 +9,17 @@ def ParseDegreeString(ddmmss):
 def DDMMSStoDecimal(degrees, minutes, seconds):
     decimaldegrees= degrees + (minutes/60) + (seconds/3600)
     return decimaldegrees
-inputfile = "07.Project Angles Input.txt"
-outputfile ="07.Project Angles Output.txt"
-def file(inputfile, outputfile):
-    with open(inputfile, "r") as infile:
-        lines = infile.readlines()
-    outputcount = 0
-    for line in lines:
-        degrees, minutes, seconds = ParseDegreeString(ddmmss)
-        decimaldegrees = DDMMSStoDecimal(degrees, minutes, seconds)
-        ouputcount.append(decimaldegrees) 
-    with open(outputfile, "w") as outfile:
-        for decimaldegrees in outputcount:
-            outputfile.write(f"{decimaldegrees}")
-    return len(outputcount)
+
+inputfile = open("07.Project Angles Input.txt", "r")
+outputfile = open("07.Project Angles Output.txt", "w")
+inputcount = 0
+line = inputfile.readline()
+while line != "":  
+    degrees, minutes, seconds = ParseDegreeString(line) 
+    decimaldegrees = DDMMSStoDecimal(degrees, minutes, seconds)
+    outputfile.write(str(decimaldegrees) + "\n")
+    inputcount += 1
+    line = inputfile.readline()
+inputfile.close()
+outputfile.close()
+print(inputcount,"records read")

@@ -3,6 +3,6 @@ a = []
 s = n.split()
 for x in range(len(s)):
     a.append(int(s[x]))
-for x in range(len(s)):
-    print(a[1], a[3])
+for x in range(1, len(s),2):
+    print(a[x])
 #why is it printing 5 times 
