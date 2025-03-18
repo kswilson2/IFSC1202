@@ -6,7 +6,8 @@ x = inputfile.readline()
 while x != "":
 	a.append(x)
 	x = inputfile.readline()
-inputfile.close()
-# Print the list - get the number of elements using the len() method
+	strip = x.strip('\n') #not sure if strip is working 
+
 for i in range(len(a)):
 	print(a[i])
+inputfile.close()
