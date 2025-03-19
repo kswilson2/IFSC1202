@@ -3,22 +3,31 @@
 a = []
 inputfile = open("constitution.txt", "r")
 line = inputfile.readline()
-prompt = input("Enter search term: ")
+
 while line != "":
+	line = line.strip()
 	a.append(line)
 	line = inputfile.readline()
-	strippedtext = line.strip('\n')
-	find = strippedtext.find(prompt)
-	if find != -1:
-		print(find)
 
-for i in range(1, find-1):
-	firstblank = strippedtext.rfind("")
-	print(firstblank)
 
-for i in range (find+1):
-	lastblank = strippedtext.find("")
-	print(lastblank)
-print(strippedtext[firstblank:lastblank])
+prompt = input("Enter search term: ")
+for k in range(0, len(a)):
+	if a[k].find(prompt) != -1:
+
+		for i in range(k, 0, -1):
+			if a[i] == "":
+				start = i
+				break
+
+		for i in range (k, len(a)):
+			if a[i] == "":
+				end = i
+				break
+
+		print(k, start, end)
+		for m in range(start,end + 1):
+			print(a[m])
+
+		k = end + 1
 inputfile.close()
 		
