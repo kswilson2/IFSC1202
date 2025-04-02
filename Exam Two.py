@@ -25,7 +25,7 @@ for i in range(len(a)):
 	    print("Boy's Name - Rank: " ,boyrank)
     if girlindex != 0:
 	    print("Girls's Name - Rank: " ,girlrank)
-    if prompt == -1:
+    if a[i][0] != prompt and a[i][1] != prompt:
 	    print("Name Not Found")
 
 
