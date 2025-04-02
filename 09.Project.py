@@ -20,7 +20,7 @@ for i in range(len(a)):
 if FromCity == -1:
     print("Invalid From City")	
 ToIndex = 0
-for i in range(len(a[0])):
+for i in range(len(a)):
 	if a[0][i] == ToCity:
 		ToIndex = i
 if ToIndex == -1:
