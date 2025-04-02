@@ -1,1 +1,1 @@
-#go through every value and multipl by 2 
+#go through every value and multiply by 2 
