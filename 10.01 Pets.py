@@ -1,0 +1,1 @@
+#read, split by comma, just printing values
