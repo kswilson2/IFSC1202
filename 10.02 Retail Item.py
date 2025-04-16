@@ -13,10 +13,27 @@ class RetailItem ():
 		inventoryvalue =  self.UnitsOnHand * self.Price
 		return inventoryvalue
  
-inputfile = open("10.01 Pets.txt","r")
+#open input file to read
+inputfile = open("10.02 Inventory.txt")
+#create list for objects
+list = []
+#read file
+for i in inputfile:
+	line = i.replace("\n","")
+	data = line.split(",")
+#store data
+	temp = RetailItem() 
+	temp.Description = data[0]
+	temp.UnitsOnHand = int(data[1]) 
+	temp.Price = float(data[2]) 
+	list.append(temp)
 
-# Step 5 - Create 4 instances of ball
-myball1 = Ball("Basketball", 9.51, 8.0)
-myball2 = Ball("Volleyball", 8.15, 7.5)
-myball3 = Ball("Soccerball", 8.65, 9.0)
-myball4 = Ball() #basketball is assumed using default values
+#print header
+print("{:>15} {:>10} {:>10} {:>15} ".format("Description","Units On Hand","Price","Inventory Value"))
+
+#print data
+for obj in list:
+  print("{:>15} {:>10} {:>10} {:>15} ".format(obj.Description,obj.UnitsOnHand,obj.Price))
+
+#close file
+inputfile.close()
