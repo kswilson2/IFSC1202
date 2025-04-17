@@ -46,6 +46,7 @@ while x != "":
 	list.append(y) 
 	x = inputfile.readline()
 	student1 = Student(x[0], x[1], x[2], x[3:])
+	
 #print header
 print("{:>10} {:>10} {:>10} {:>15} {:>15} {:>10}".format("First","Last","ID","Running","Semester","Letter"))
 print("{:>10} {:>10} {:>10} {:>15} {:>15} {:>10}".format("Name","Name","Number","Average","Average","Grade"))
