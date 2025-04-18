@@ -16,13 +16,15 @@ class Student ():
 			else:
 				scores.append(0)
 		return sum(scores)/ len(scores)
+	
 # Step 4 - Here is another action
 	def TotalAverage(self):
 		scores = []
 		for grade in self.Grades:
 			if grade != "":
 				scores.append(int(grade))
-		return sum(scores)/ len(scores)		
+		return sum(scores)/ len(scores)	
+		
 # Step 4 - Here is another action
 	def LetterGrade(self):
 		average = self.RunningAverage
@@ -37,23 +39,44 @@ class Student ():
 		else:
 			return "F"
 
-inputfile = open("10.Project Student Scores.txt","r")
+inputfile = open("10.Project Student Scores.txt")
 x = inputfile.readline()
 list = []
 while x != "":
 	y = x.split(",")
-	y[2]=y[2].strip()
-	list.append(y) 
+	y = x.replace("\n","")
+	student = Student(y[0].strip(), (y[1].strip()), (y[2].strip()), (y[3].strip()))
+	list.append(student)
 	x = inputfile.readline()
-	student1 = Student(x[0], x[1], x[2], x[3:])
-	
-#print header
-print("{:>10} {:>10} {:>10} {:>15} {:>15} {:>10}".format("First","Last","ID","Running","Semester","Letter"))
-print("{:>10} {:>10} {:>10} {:>15} {:>15} {:>10}".format("Name","Name","Number","Average","Average","Grade"))
-print("------------ "*6)
-#print data
-print(student1)
+
 #close file
 inputfile.close()
-		
+
+
+#print header
+#print("{:>10} {:>10} {:>10} {:>15} {:>15} {:>10}".format("First","Last","ID","Running","Semester","Letter"))
+#print("{:>10} {:>10} {:>10} {:>15} {:>15} {:>10}".format("Name","Name","Number","Average","Average","Grade"))
+#print("------------ "*6)
+#print data
+
+# for std in list:
+#	print('{:>10}{:>10}{:>14}{:>15.2f}{:>15.2f}{:>10}'.format(std.FirstName, std.LastName, std.TNumber, std.TotalAverage(),std.RunningAverage(),std.LetterGrade()))
+
+def main():
+    filename = '10.Project Student Scores.txt' 
+    stud_list = []
+    with open(filename, 'r') as infile:
+        for line in infile:
+            line = line.strip().split(',')
+            s = Student(line[0], line[1], line[2], line[3:])
+            stud_list.append(s)
+
+    print('{:>10}{:>10}{:>14}{:>15}{:>15}{:>10}'.format('First', 'Last', 'ID', 'Running', 'Semester', 'Letter'))
+    print('{:>10}{:>10}{:>14}{:>15}{:>15}{:>10}'.format('Name', 'Name', 'Number', 'Average', 'Average', 'Grade'))
+    print('-' * 75)
+    for std in stud_list:
+        print('{:>10}{:>10}{:>14}{:>15.2f}{:>15.2f}{:>10}'.format(std.FirstName, std.LastName, std.TNumber,
+                                                                  std.TotalAverage(),std.RunningAverage(),
+                                                            std.LetterGrade()))
+main()	
  
