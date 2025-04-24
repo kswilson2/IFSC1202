@@ -15,8 +15,8 @@ class Student ():
 				scores.append(int(grade))
 			else:
 				scores.append(0)
-	#	return sum(scores)/ len(scores)
-		return sum(scores)/ 2
+		return sum(scores)/ len(scores)
+
 # Step 4 - Here is another action
 	def TotalAverage(self):
 		scores = []
@@ -51,24 +51,29 @@ class StudentList ():
 # Add student to the list
 	def add_student(self, FirstName="", LastName="", TNumber=""):
 #		Create a new student object
-		mystudent = Student(FirstName, LastName, TNumber)
+		student = Student(FirstName, LastName, TNumber)
 #		Append student object to list
-		self.Studentlist.append(mystudent)
+		self.Studentlist.append(student)
 		
 # Find a student and return the index
 	def find_student(self, studenttofind):
-		for i in range(len(self.Studentlistlist)):
+		for i in range(len(self.Studentlist)):
 			if self.Studentlist[i].TNumber == studenttofind:
 				return i
 		return -1	
 	
 # Print the student list
 	def print_student_list(self):
-		print('{:>12}{:>12}{:>12}{:>14}{:>14}{:>12}'.format('First', 'Last', 'ID', 'Running', 'Semester', 'Letter'))
+		for student in self.Studentlist:
+			print(f"Name: {student.FirstName} {student.LastName}, TNumber: {student.TNumber}")
+			print(f"  Running Average: {student.RunningAverage()}")
+			print(f"  Total Average: {student.TotalAverage()}")
+			print(f"  Letter Grade: {student.LetterGrade()}")
+#		print('{:>12}{:>12}{:>12}{:>14}{:>14}{:>12}'.format('First', 'Last', 'ID', 'Running', 'Semester', 'Letter'))
 #		for i in range(len(self.Studentlist)):
 #			print('{:>12}{:>12}{:>12}{:>14.2f}{:>14.2f}{:>12}'.format(self.Studentlist[i].FirstName, self.Studentlist[i].LastName, self.Studentlist[i].TNumber, self.Studentlist[i].TotalAverage, self.Studentlist[i].RunningAverage, self.Studentlist[i].LetterGrade()))
-		for std in self.StudentList:
-			print('{:>12}{:>12}{:>12}{:>14.2f}{:>14.2f}{:>12}'.format(std.FirstName, std.LastName, std.TNumber, std.TotalAverage(),std.RunningAverage(), std.LetterGrade()))
+#		for std in self.StudentList:
+#			print('{:>12}{:>12}{:>12}{:>14.2f}{:>14.2f}{:>12}'.format(std.FirstName, std.LastName, std.TNumber, std.TotalAverage(),std.RunningAverage(), std.LetterGrade()))
 #		print()
 		
 # Read a file and append the values to the student list
@@ -83,29 +88,29 @@ class StudentList ():
 		studentfile.close()
 
 # Read a file and append the values to the scores list
-	def add_scores_from_file(self, filename):
-		scoresfile = open(filename)
-		x = scoresfile.readline()
-		while x != "":
-			y = x.split(",")
+#	def add_scores_from_file(self, filename):
+#		scoresfile = open(filename)
+#		x = scoresfile.readline()
+#		while x != "":
+#			y = x.split(",")
 #			print(y) # display the result of the split
-			self.add_student(y[0].strip(), y[1].strip())
-			x = scoresfile.readline()
-		scoresfile.close()
+#			self.add_student(y[0].strip(), y[1].strip())
+#			x = scoresfile.readline()
+#		scoresfile.close()
 
 
 #--------------------------------------------------------------------
  
-# Create a Ball List
 mystudentlist = StudentList()
  
-# Read Ball List from File
+# Read student List from File
 mystudentlist.add_student_from_file("11.Project Students.txt")
 
 # Read Scores List from File
-mystudentlist.add_scores_from_file("11.Project Scores.txt")
+#mystudentlist.add_scores_from_file("11.Project Scores.txt")
 
 # Display List
 print()
 mystudentlist.print_student_list()
+
 
