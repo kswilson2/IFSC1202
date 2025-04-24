@@ -46,13 +46,12 @@ class StudentList:
         return -1
 
     def print_student_list(self):
-        """Prints the attributes of each student in the list."""
         for student in self.Studentlist:
-            print(f"Name: {student.FirstName} {student.LastName}, TNumber: {student.TNumber}")
-            print(f"  Running Average: {student.RunningAverage()}")
-            print(f"  Total Average: {student.TotalAverage()}")
-            print(f"  Letter Grade: {student.LetterGrade()}")
-            print("-" * 20)
+           print(f"Name: {student.FirstName} {student.LastName}, TNumber: {student.TNumber}")
+           print(f"  Running Average: {student.RunningAverage()}")
+           print(f"  Total Average: {student.TotalAverage()}")
+           print(f"  Letter Grade: {student.LetterGrade()}")
+           print("-" * 20)
 
     def add_student_from_file(self, filename):
         """Reads student data from a file and adds them to the Studentlist."""

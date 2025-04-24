@@ -1,22 +1,17 @@
 class Student ():
-	
     def __init__(self, firstname="", lastname="", tnumber=""):
         self.FirstName = firstname
         self.LastName = lastname
         self.TNumber = tnumber
         self.Grades = []
-		
     def RunningAverage(self):
-        """Calculates the running average of non-blank scores."""
         valid_grades = [int(grade) for grade in self.Grades if grade.strip() != '']
         return sum(valid_grades) / len(valid_grades) if valid_grades else 0
-
     def TotalAverage(self):
-        """Calculates the average of scores, treating missing scores as zero."""
         total_sum = sum(int(grade) if grade.strip() != '' else 0 for grade in self.Grades)
         return total_sum / len(self.Grades) if self.Grades else 0
-    def LetterGrade(self):
-	    average = self.RunningAverage()
+	def LetterGrade(self):
+		average = self.RunningAverage()
 		if average >= 90:
 			return "A"
 		elif average >= 80:
@@ -27,7 +22,7 @@ class Student ():
 			return "D"
 		else:
 			return "F"
-		
+
 class StudentList ():
 	
 	def __init__(self):
