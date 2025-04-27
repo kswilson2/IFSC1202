@@ -84,7 +84,7 @@ class BallList ():
 		while x != "":
 #			print(x) # display what was read
 			y = x.split(",")
-#			print(y) # display the result of the split
+#		print(y) # display the result of the split
 			self.add_ball(y[0].strip(), float(y[1].strip()), float(y[2].strip()))
 			x = ballfile.readline()
 		ballfile.close()
