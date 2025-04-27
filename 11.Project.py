@@ -16,7 +16,6 @@ class Student ():
 			else:
 				scores.append(0)
 		return sum(scores)/ len(scores)
-
 # Step 4 - Here is another action
 	def TotalAverage(self):
 		scores = []
@@ -40,13 +39,10 @@ class Student ():
 
 # Step 1 - Define the class object 
 class StudentList ():
-	
 # Step 2 - Define the initializer and any default values
 	def __init__(self):
- 
 # Step 3 - Define the object attributes
 		self.Studentlist = []
- 
 # Step 4 - Define Actions (Methods) associated with the object
 # Add student to the list
 	def add_student(self, FirstName="", LastName="", TNumber=""):
@@ -69,10 +65,11 @@ class StudentList ():
 			print(f"  Running Average: {student.RunningAverage()}")
 			print(f"  Total Average: {student.TotalAverage()}")
 			print(f"  Letter Grade: {student.LetterGrade()}")
-#		print('{:>12}{:>12}{:>12}{:>14}{:>14}{:>12}'.format('First', 'Last', 'ID', 'Running', 'Semester', 'Letter'))
-#		for i in range(len(self.Studentlist)):
-#			print('{:>12}{:>12}{:>12}{:>14.2f}{:>14.2f}{:>12}'.format(self.Studentlist[i].FirstName, self.Studentlist[i].LastName, self.Studentlist[i].TNumber, self.Studentlist[i].TotalAverage, self.Studentlist[i].RunningAverage, self.Studentlist[i].LetterGrade()))
-#		for std in self.StudentList:
+			print("-" * 20)
+#	print('{:>12}{:>12}{:>12}{:>14}{:>14}{:>12}'.format('First', 'Last', 'ID', 'Running', 'Semester', 'Letter'))
+#	for i in range(len(self.Studentlist)):
+#		print('{:>12}{:>12}{:>12}{:>14.2f}{:>14.2f}{:>12}'.format(self.Studentlist[i].FirstName, self.Studentlist[i].LastName, self.Studentlist[i].TNumber, self.Studentlist[i].TotalAverage, self.Studentlist[i].RunningAverage, self.Studentlist[i].LetterGrade()))
+#	for std in self.StudentList:
 #			print('{:>12}{:>12}{:>12}{:>14.2f}{:>14.2f}{:>12}'.format(std.FirstName, std.LastName, std.TNumber, std.TotalAverage(),std.RunningAverage(), std.LetterGrade()))
 #		print()
 		
@@ -88,16 +85,30 @@ class StudentList ():
 		studentfile.close()
 
 # Read a file and append the values to the scores list
-#	def add_scores_from_file(self, filename):
-#		scoresfile = open(filename)
-#		x = scoresfile.readline()
-#		while x != "":
-#			y = x.split(",")
-#			print(y) # display the result of the split
-#			self.add_student(y[0].strip(), y[1].strip())
-#			x = scoresfile.readline()
-#		scoresfile.close()
+#def add_scores_from_file(self, filename):
+#	scoresfile = open(filename)
+#	x = scoresfile.readline()
+#	while x != "":
+#		y = x.strip.split(",")
+#		print(y) # display the result of the split
+#		index = self.find_student(tnumber)
+#		if index != -1:
+#			self.Studentlist[index].Grades.append(grades)
+#	x = scoresfile.readline()
+#	scoresfile.close()
 
+	def add_scores_from_file(self, filename):
+		try:
+			with open(filename, "r") as file:
+				for line in file:
+					tnumber, *grades = line.strip().split(",")
+					student_index = self.find_student(tnumber)
+					if student_index != -1:
+						self.Studentlist[student_index].Grades.extend(grades)
+					else:
+						print(f"Warning: Student with TNumber {tnumber} not found.")
+		except FileNotFoundError:
+			print(f"Error: File not found: {filename}")
 
 #--------------------------------------------------------------------
  
@@ -107,7 +118,7 @@ mystudentlist = StudentList()
 mystudentlist.add_student_from_file("11.Project Students.txt")
 
 # Read Scores List from File
-#mystudentlist.add_scores_from_file("11.Project Scores.txt")
+mystudentlist.add_scores_from_file("11.Project Scores.txt")
 
 # Display List
 print()
