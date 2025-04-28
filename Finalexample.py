@@ -1,100 +1,98 @@
 class Sketch:
     def __init__(self, size):
+        # Initialize the Sketch object with the specified size.
         self.size = size
         self.xpos = 0
         self.ypos = 0
-        self.direction = 'U'  # Up
-        self.pen = 'U'  # Up
-        self.canvas = [[' ' for _ in range(size)] for _ in range(size)]
+        self.direction = 'U'  # Initial direction: Up
+        self.pen = 'U'  # Initial pen state: Up
+        self.canvas = [[' ' for _ in range(size)] for _ in range(size)]  # Create a 2D canvas filled with spaces.
 
     def printsketch(self):
-        print("\n")
-        for i in range(self.size - 1, -1, -1):
-            print("".join(self.canvas[i]))
-        print("\n")
-        print(f"X: {self.xpos}, Y: {self.ypos}, Direction: {self.direction}")
+        # Print the sketch, including the canvas and current position/direction.
+        print('+', '-' * self.size, '+')
+        for row in reversed(self.canvas):
+            print('|', ''.join(row), '|')
+        print('+', '-' * self.size, '+')
+        print(f'X = {self.xpos} Y = {self.ypos} Direction = {self.direction}')
 
     def penup(self):
+        # Lift the pen up.
         self.pen = 'U'
 
     def pendown(self):
+        # Put the pen down.
         self.pen = 'D'
 
-    def turnleft(self):
+    def turnright(self):
+        # Turn the pen 90 degrees to the right.
+        # The direction changes in a clockwise manner (U -> L -> D -> R -> U).
         if self.direction == 'U':
             self.direction = 'L'
         elif self.direction == 'L':
             self.direction = 'D'
         elif self.direction == 'D':
             self.direction = 'R'
-        else:
+        elif self.direction == 'R':
             self.direction = 'U'
 
-    def turnright(self):
+    def turnleft(self):
+        # Turn the pen 90 degrees to the left.
+        # The direction changes in a counter-clockwise manner (U -> R -> D -> L -> U).
         if self.direction == 'U':
             self.direction = 'R'
         elif self.direction == 'R':
             self.direction = 'D'
         elif self.direction == 'D':
             self.direction = 'L'
-        else:
+        elif self.direction == 'L':
             self.direction = 'U'
 
     def move(self, distance):
+        # Move the pen in the current direction for the specified distance.
         for _ in range(distance):
-            if self.direction == 'U':
-                new_ypos = self.ypos - 1
-                if 0 <= new_ypos < self.size:
-                    if self.pen == 'D':
-                        self.canvas[new_ypos][self.xpos] = '*'
-                    self.ypos = new_ypos
-                else:
-                    break
-            elif self.direction == 'D':
-                new_ypos = self.ypos + 1
-                if 0 <= new_ypos < self.size:
-                    if self.pen == 'D':
-                        self.canvas[new_ypos][self.xpos] = '*'
-                    self.ypos = new_ypos
-                else:
-                    break
-            elif self.direction == 'L':
-                new_xpos = self.xpos - 1
-                if 0 <= new_xpos < self.size:
-                    if self.pen == 'D':
-                        self.canvas[self.ypos][new_xpos] = '*'
-                    self.xpos = new_xpos
-                else:
-                    break
-            elif self.direction == 'R':
-                new_xpos = self.xpos + 1
-                if 0 <= new_xpos < self.size:
-                    if self.pen == 'D':
-                        self.canvas[self.ypos][new_xpos] = '*'
-                    self.xpos = new_xpos
-                else:
-                    break
-
-
-# Main execution
+            if self.pen == 'D':
+                # Draw '*' on the canvas if the pen is down.
+                self.canvas[self.xpos][self.ypos] = '*'
+            # Update the position based on the current direction.
+            if self.direction == 'U' and self.xpos < self.size - 1:
+                self.xpos += 1
+            elif self.direction == 'D' and self.xpos > 0:
+                self.xpos -= 1
+            elif self.direction == 'L' and self.ypos > 0:
+                self.ypos -= 1
+            elif self.direction == 'R' and self.ypos < self.size - 1:
+                self.ypos += 1
+                
+# Read commands from the file
 with open("Cshape.txt", "r") as file:
-    size = int(file.readline().strip())
-    sketch = Sketch(size)
+    # Split the lines of the file into a list of commands
+    commands = file.read().splitlines()
 
-    for line in file:
-        command = line.strip().split(",")
-        command_type = int(command[0])
+# Create and execute the Sketch object
+sketch = Sketch(int(commands[0]))
 
-        if command_type == 1:
-            sketch.penup()
-        elif command_type == 2:
-            sketch.pendown()
-        elif command_type == 3:
-            sketch.turnright()
-        elif command_type == 4:
-            sketch.turnleft()
-        elif command_type == 5:
-            distance = int(command[1])
-            sketch.move(distance)
-        elif command_type == 6:
-            sketch.printsketch()
+# Iterate through the commands and perform corresponding actions on the Sketch object
+for command in commands[1:]:
+    # Split the command into action and arguments
+    action, *args = command.split(',')
+    
+    # Check the action and execute the corresponding method on the Sketch object
+    if action == '6':
+        # Print the current state of the sketch
+        sketch.printsketch()
+    elif action == '1':
+        # Lift the pen up
+        sketch.penup()
+    elif action == '2':
+        # Put the pen down
+        sketch.pendown()
+    elif action == '3':
+        # Turn the pen 90 degrees to the left
+        sketch.turnleft()
+    elif action == '4':
+        # Turn the pen 90 degrees to the right
+        sketch.turnright()
+    elif action == '5':
+        # Move the pen in the current direction by the specified distance
+        sketch.move(int(args[0]))
