@@ -42,13 +42,13 @@ class Sketch ():
 	
 	def move(self, distance):
 		for i in range(distance):
-			if self.pen == "D":
-			    self.canvas[self.xpos][self.ypos] = "*"
+			if self.pen == 'D':
+				self.canvas[self.xpos][self.ypos] = '*'
 			if self.direction == 'U' and self.xpos < self.size - 1:
-                self.xpos += 1
+				self.xpos += 1
 			elif self.direction == 'D' and self.xpos > 0:
-                self.xpos -= 1
-            elif self.direction == 'L' and self.ypos > 0:
-                self.ypos -= 1
-            elif self.direction == 'R' and self.ypos < self.size - 1:
-                self.ypos += 1
+				self.xpos -= 1
+			elif self.direction == 'L' and self.ypos > 0:
+				self.ypos -= 1
+			elif self.direction == 'R' and self.ypos < self.size - 1:
+				self.ypos += 1
