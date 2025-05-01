@@ -1,20 +1,17 @@
-# Step 1 - Define the class object 
 class Student ():
-# Step 2 - Define the initializer
 	def __init__(self, firstname="", lastname="", tnumber=""):
-# Step 3 - Define the object attributes
 		self.FirstName = firstname
 		self.LastName = lastname
 		self.TNumber = tnumber
 		self.Grades = []
-# Step 4 - Define Actions (Methods) associated with the object
+		
 	def RunningAverage(self):
 		scores = []
 		for grade in self.Grades:
 			if grade != "":
 				scores.append(int(grade))
 		return sum(scores)/ len(scores) 
-# Step 4 - Here is another action
+
 	def TotalAverage(self):
 		scores = []
 		for grade in self.Grades:
